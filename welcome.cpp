@@ -8,6 +8,9 @@ int main(){
     if(name.length()>12){
         cout<<" Space Exceeded ";
     }
+    else if(name.empty()){
+        cout<<" You didn't enter your name ";
+    }
     else{
         cout<<"Welcome "<<name<<endl;
     }
