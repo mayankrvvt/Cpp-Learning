@@ -7,73 +7,83 @@ int main() {
 
     int userChoice;
     int computerChoice;
+    char playAgain;
 
     srand(time(0));
 
-    cout << "===== ROCK PAPER SCISSORS =====" << endl;
+    do {
 
-    cout << "\n1. Rock" << endl;
-    cout << "2. Paper" << endl;
-    cout << "3. Scissors" << endl;
+        cout << "\n===== ROCK PAPER SCISSORS =====" << endl;
+        cout << "1. Rock" << endl;
+        cout << "2. Paper" << endl;
+        cout << "3. Scissors" << endl;
 
-    cout << "\nEnter your choice: ";
-    cin >> userChoice;
+        cout << "Enter your choice: ";
+        cin >> userChoice;
 
-    // Computer chooses randomly
-    computerChoice = rand() % 3 + 1;
+        if (userChoice < 1 || userChoice > 3) {
+            cout << "Invalid choice!" << endl;
+            continue;
+        }
 
-    cout << "\nYou chose: ";
+        // Computer chooses randomly
+        computerChoice = rand() % 3 + 1;
 
-    switch (userChoice) {
-        case 1:
-            cout << "Rock";
-            break;
+        cout << "\nYou chose: ";
 
-        case 2:
-            cout << "Paper";
-            break;
+        switch (userChoice) {
+            case 1:
+                cout << "Rock";
+                break;
 
-        case 3:
-            cout << "Scissors";
-            break;
+            case 2:
+                cout << "Paper";
+                break;
 
-        default:
-            cout << "Invalid choice!";
-            return 0;
-    }
+            case 3:
+                cout << "Scissors";
+                break;
+        }
 
-    cout << "\nComputer chose: ";
+        cout << "\nComputer chose: ";
 
-    switch (computerChoice) {
-        case 1:
-            cout << "Rock";
-            break;
+        switch (computerChoice) {
+            case 1:
+                cout << "Rock";
+                break;
 
-        case 2:
-            cout << "Paper";
-            break;
+            case 2:
+                cout << "Paper";
+                break;
 
-        case 3:
-            cout << "Scissors";
-            break;
-    }
+            case 3:
+                cout << "Scissors";
+                break;
+        }
 
-    cout << "\n\n";
+        cout << "\n\n";
 
-    // Decide winner
-    if (userChoice == computerChoice) {
-        cout << "It's a DRAW!" << endl;
-    }
-    else if (
-        (userChoice == 1 && computerChoice == 3) ||
-        (userChoice == 2 && computerChoice == 1) ||
-        (userChoice == 3 && computerChoice == 2)
-    ) {
-        cout << "YOU WIN! 🎉" << endl;
-    }
-    else {
-        cout << "COMPUTER WINS!" << endl;
-    }
+        // Check winner
+        if (userChoice == computerChoice) {
+            cout << "It's a DRAW!" << endl;
+        }
+        else if (
+            (userChoice == 1 && computerChoice == 3) ||
+            (userChoice == 2 && computerChoice == 1) ||
+            (userChoice == 3 && computerChoice == 2)
+        ) {
+            cout << "YOU WIN!" << endl;
+        }
+        else {
+            cout << "COMPUTER WINS!" << endl;
+        }
+
+        cout << "\nDo you want to play again? (y/n): ";
+        cin >> playAgain;
+
+    } while (playAgain == 'y' || playAgain == 'Y');
+
+    cout << "\nThanks for playing!" << endl;
 
     return 0;
 }
